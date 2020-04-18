@@ -13,7 +13,6 @@ public class PlayerController : MonoBehaviour
     public AdvancedAnimation IdleAnimation;
     [Header("Objects")]
     public GameObject Model;
-    public Trigger OnHit;
     private Rigidbody rigidbody;
     private void Awake()
     {
@@ -47,10 +46,5 @@ public class PlayerController : MonoBehaviour
         }
         targetVelocity.y = rigidbody.velocity.y;
         rigidbody.velocity = targetVelocity;
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        OnHit.Activate();
-        Destroy(other.gameObject);
     }
 }
