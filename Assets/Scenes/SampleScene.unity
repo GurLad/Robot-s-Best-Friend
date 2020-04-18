@@ -410,6 +410,60 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 203388556}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &218191686
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 218191688}
+  - component: {fileID: 218191687}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &218191687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 218191686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 503e3cc1078ae6f499037e9034c86f44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Tracks:
+  - Name: Before the Storm
+    AudioClip: {fileID: 8300000, guid: 68f9c3593fe50604ab16f2df0d5b5fc5, type: 3}
+  - Name: No Escape
+    AudioClip: {fileID: 8300000, guid: f42051e9b2bd20345a038f312d24a688, type: 3}
+  - Name: The Past Never Dies
+    AudioClip: {fileID: 8300000, guid: e17f27077d414134baa3dba1b3033368, type: 3}
+  FadeSpeed: 1
+  Volume: 1
+  PlayOnStart: 1
+  KeepTimestamp: 0
+--- !u!4 &218191688
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 218191686}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &225976404
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4935,6 +4989,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 8208064897419446267}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &6839694043033222851 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 3387726129871960376, guid: 5e6bf351da27b5642822b2028ecf2ffd,
+    type: 3}
+  m_PrefabInstance: {fileID: 8208064897419446267}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7543565275343310033 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1826428656676064042, guid: 5e6bf351da27b5642822b2028ecf2ffd,
@@ -5123,6 +5183,11 @@ PrefabInstance:
       propertyPath: TimeToFlee.y
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 8208064896787408606, guid: 5e6bf351da27b5642822b2028ecf2ffd,
+        type: 3}
+      propertyPath: Backpack
+      value: 
+      objectReference: {fileID: 6839694043033222851}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e6bf351da27b5642822b2028ecf2ffd, type: 3}
 --- !u!1001 &9207417750837039094

@@ -21,7 +21,7 @@ public class CrossfadeMusicPlayer : MonoBehaviour
     private AudioSource mainAudioSource;
     private AudioSource seconderyAudioSource;
     private float count;
-    private void Start()
+    private void Awake()
     {
         if (Instance != null)
         {
@@ -43,6 +43,7 @@ public class CrossfadeMusicPlayer : MonoBehaviour
             mainAudioSource.clip = Tracks[0].AudioClip;
             mainAudioSource.Play();
         }
+        CrossfadeMusicPlayer.Instance.Play("No Escape");
     }
     public void Play(string name)
     {

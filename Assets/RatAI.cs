@@ -13,6 +13,7 @@ public class RatAI : MonoBehaviour
     public Healthbar OxygenDisplay;
     public AdvancedAnimation OpenLidAnimation;
     public AdvancedAnimation CloseLidAnimation;
+    public Collider Backpack; 
     public GameObject Body;
     public RatRunAI Rat;
     [HideInInspector]
@@ -53,9 +54,10 @@ public class RatAI : MonoBehaviour
                     timeToFlee = Random.Range(TimeToFlee.x, TimeToFlee.y);
                     Mode = RatMode.Running;
                     Body.SetActive(false);
+                    Backpack.enabled = false;
                     RatRunAI newRat = Instantiate(Rat.gameObject).GetComponent<RatRunAI>();
                     newRat.transform.position = PlayerController.Instance.transform.position - PlayerController.Instance.Model.transform.forward * 1.5f;
-                    newRat.Velocity = PlayerController.Instance.Model.transform.forward * newRat.Speed;
+                    newRat.Velocity = -PlayerController.Instance.Model.transform.forward * newRat.Speed;
                     newRat.Start();
                 }
                 oxygen += Time.deltaTime * OxygenReplenishRate;
@@ -70,6 +72,12 @@ public class RatAI : MonoBehaviour
                 }
                 break;
             case RatMode.Running:
+                oxygen += Time.deltaTime * OxygenReplenishRate;
+                if (oxygen >= 100)
+                {
+                    oxygen = 100;
+                }
+                OxygenDisplay.Value = oxygen;
                 break;
             default:
                 break;

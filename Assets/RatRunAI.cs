@@ -35,6 +35,7 @@ public class RatRunAI : MonoBehaviour
         if (collision.gameObject.GetComponentInParent<PlayerController>() != null)
         {
             RatAI.Instance.Body.SetActive(true);
+            RatAI.Instance.Backpack.enabled = true;
             RatAI.Instance.CloseLid();
             Destroy(gameObject);
         }
