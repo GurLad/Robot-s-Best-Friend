@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -46,5 +47,9 @@ public class PlayerController : MonoBehaviour
         }
         targetVelocity.y = rigidbody.velocity.y;
         rigidbody.velocity = targetVelocity;
+    }
+    public void Lose()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

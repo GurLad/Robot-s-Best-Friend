@@ -1,8 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
@@ -48,7 +46,7 @@ public class Health : MonoBehaviour
                     }
                     else
                     {
-                        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                        PlayerController.Instance.Lose();
                     }
                 }
                 count = InvincibilityTime;
