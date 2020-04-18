@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
                 IdleAnimation.Activate(true);
             }
         }
+        targetVelocity.y = rigidbody.velocity.y;
         rigidbody.velocity = targetVelocity;
     }
 }
