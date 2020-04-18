@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController Instance;
     [Header("Stats")]
     public float Speed;
     public float Sensitivity;
@@ -12,7 +13,12 @@ public class PlayerController : MonoBehaviour
     public AdvancedAnimation IdleAnimation;
     [Header("Objects")]
     public GameObject Model;
+    public Trigger OnHit;
     private Rigidbody rigidbody;
+    private void Awake()
+    {
+        Instance = this;
+    }
     private void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
@@ -41,5 +47,9 @@ public class PlayerController : MonoBehaviour
         }
         targetVelocity.y = rigidbody.velocity.y;
         rigidbody.velocity = targetVelocity;
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        OnHit.Activate();
     }
 }

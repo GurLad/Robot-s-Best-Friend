@@ -272,6 +272,8 @@ public class AdvancedAnimation : MonoBehaviour
                 catch { }
             }
         }
+        Count = 0;
+        AdvancedAnimationListeners.ForEach(AAL => AAL.OnStepChange(1));
         active = true;
     }
 }
