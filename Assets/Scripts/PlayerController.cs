@@ -51,5 +51,6 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         OnHit.Activate();
+        Destroy(other.gameObject);
     }
 }
