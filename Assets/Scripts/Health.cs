@@ -7,6 +7,7 @@ public class Health : MonoBehaviour
     public Healthbar Healthbar;
     public bool IsEnemy;
     public float HP;
+    public bool Rat = true;
     private float fullSize;
 
     // Start is called before the first frame update
@@ -37,7 +38,7 @@ public class Health : MonoBehaviour
                     }
                     else
                     {
-                        PlayerController.Instance.Lose();
+                        PlayerController.Instance.Lose(Rat);
                     }
                 }
                 Destroy(other.transform.parent.gameObject);

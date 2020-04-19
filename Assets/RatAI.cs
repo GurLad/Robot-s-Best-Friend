@@ -51,7 +51,7 @@ public class RatAI : MonoBehaviour
                 oxygen -= Time.deltaTime * OxygenDecayRate;
                 if (oxygen <= 0)
                 {
-                    PlayerController.Instance.Lose();
+                    PlayerController.Instance.Lose(true);
                 }
                 OxygenDisplay.Value = oxygen;
                 if (Input.GetButtonDown("OpenCloseLid"))

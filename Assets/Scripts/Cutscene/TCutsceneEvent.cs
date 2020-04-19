@@ -22,6 +22,10 @@ public class TCutsceneEvent : ContinuousTrigger
 
     public override void Activate()
     {
+        if (triggers == null)
+        {
+            Start();
+        }
         foreach (var item in triggers)
         {
             item.Activate();

@@ -21,6 +21,12 @@ public class PlayerController : MonoBehaviour
     [Header("Objects")]
     public GameObject Model;
     public Healthbar Energy;
+    [Header("Death")]
+    public GameObject DeathObject;
+    public GameObject DeathBody;
+    public GameObject DeathRat;
+    public TCutscene RobotDeath;
+    public TCutscene RatDeath;
     private Rigidbody rigidbody;
     private AdvancedAnimation activeAnimation;
     private bool dashing;
@@ -98,8 +104,19 @@ public class PlayerController : MonoBehaviour
         targetVelocity.y = rigidbody.velocity.y;
         rigidbody.velocity = targetVelocity;
     }
-    public void Lose()
+    public void Lose(bool rat)
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Destroy(gameObject);
+        DeathBody.transform.rotation = Model.transform.rotation;
+        DeathObject.SetActive(true);
+        if (rat)
+        {
+            RatDeath.Activate();
+        }
+        else
+        {
+            Destroy(DeathRat);
+            RobotDeath.Activate();
+        }
     }
 }
