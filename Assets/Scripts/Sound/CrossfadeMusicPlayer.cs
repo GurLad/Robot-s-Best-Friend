@@ -25,7 +25,7 @@ public class CrossfadeMusicPlayer : MonoBehaviour
     {
         if (Instance != null)
         {
-            Destroy(gameObject);
+            DestroyImmediate(gameObject);
             return;
         }
         else

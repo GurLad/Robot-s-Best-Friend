@@ -8,6 +8,7 @@ public class EnemyAI : MonoBehaviour
     public float Speed;
     public float AttackRange;
     public float StartAttackRange;
+    public float Range;
     [Header("Voices")]
     public AudioClip[] Clips;
     [Header("Animations")]
@@ -34,15 +35,15 @@ public class EnemyAI : MonoBehaviour
         {
             Physics.Raycast(transform.position, RatRunAI.Instance.transform.position - transform.position, out hit, float.MaxValue, ~(1 << 8));
             Debug.DrawRay(transform.position, RatRunAI.Instance.transform.position - transform.position, Color.green);
-            if (hit.transform != null && hit.transform.GetComponentInParent<RatRunAI>() != null)
+            if (hit.transform != null && hit.transform.GetComponentInParent<RatRunAI>() != null && Vector3.Distance(RatRunAI.Instance.transform.position, transform.position) < Range)
             {
                 ProjectileSpawner.ToFollow = RatRunAI.Instance.gameObject;
                 if (justFound)
                 {
                     justFound = false;
-                    SoundController.PlaySound(Clips[Random.Range(0, Clips.Length)], true);
+                    SoundController.PlaySound(Clips[Random.Range(0, Clips.Length)], false);
                 }
-                transform.LookAt(RatRunAI.Instance.transform);
+                LookAt(RatRunAI.Instance.transform.position);
                 if ((activeAnimation != FireAnimation && activeAnimation != LookAnimation && Vector3.Distance(RatRunAI.Instance.transform.position, transform.position) > StartAttackRange) ||
                     ((activeAnimation == FireAnimation || activeAnimation == LookAnimation) && Vector3.Distance(RatRunAI.Instance.transform.position, transform.position) > AttackRange))
                 {
@@ -74,16 +75,16 @@ public class EnemyAI : MonoBehaviour
         }
         Physics.Raycast(transform.position, player.transform.position - transform.position, out hit, float.MaxValue, ~(1 << 8));
         Debug.DrawRay(transform.position, player.transform.position - transform.position);
-        if (hit.transform != null && hit.transform.GetComponentInParent<PlayerController>() != null)
+        if (hit.transform != null && hit.transform.GetComponentInParent<PlayerController>() != null && Vector3.Distance(PlayerController.Instance.transform.position, transform.position) < Range)
         {
             ProjectileSpawner.ToFollow = null;
             if (justFound)
             {
                 justFound = false;
-                SoundController.PlaySound(Clips[Random.Range(0, Clips.Length)], true);
+                SoundController.PlaySound(Clips[Random.Range(0, Clips.Length)], false);
             }
-            transform.LookAt(player.transform);
-            if ((activeAnimation != FireAnimation && activeAnimation != LookAnimation && Vector3.Distance(player.transform.position,transform.position) > StartAttackRange) ||
+            LookAt(player.transform.position);
+            if ((activeAnimation != FireAnimation && activeAnimation != LookAnimation && Vector3.Distance(player.transform.position, transform.position) > StartAttackRange) ||
                 ((activeAnimation == FireAnimation || activeAnimation == LookAnimation) && Vector3.Distance(player.transform.position, transform.position) > AttackRange))
             {
                 rigidbody.velocity = transform.forward * Speed;
@@ -122,4 +123,12 @@ public class EnemyAI : MonoBehaviour
             }
         }
     }
+    private void LookAt(Vector3 pos)
+    {
+        transform.LookAt(pos - new Vector3(0, pos.y - transform.position.y));
+    }
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if (collision.gameObject.GetComponentInParent<PlayerController>();)
+    //}
 }

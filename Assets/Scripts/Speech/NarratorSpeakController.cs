@@ -41,7 +41,7 @@ public class NarratorSpeakController : MonoBehaviour
         textColor.a = 0;
         textBGColor.a = 0;
         count = 0;
-        PlaySound(voiceOver);
+        PlaySound(voiceOver, true);
         currentMode = CurrentMode.Show;
     }
 

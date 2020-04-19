@@ -1,18 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!65 &1261159418593198149
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7271637994673569644}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 3.690879, y: 1.5027273, z: 2.7885091}
-  m_Center: {x: 0, y: 0, z: 1.5442548}
 --- !u!64 &5392776748790763980
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -82,6 +69,7 @@ MonoBehaviour:
   Speed: 3
   AttackRange: 10
   StartAttackRange: 8
+  Range: 30
   Clips:
   - {fileID: 8300000, guid: 2b37f30834ac193498c7a64efb135c57, type: 3}
   - {fileID: 8300000, guid: 550673b4ce03c414493dc135321725e8, type: 3}
@@ -429,6 +417,19 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &1261159418593198149
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7271637994673569644}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.690879, y: 1.5027273, z: 2.7885091}
+  m_Center: {x: 0, y: 0, z: 1.5442548}
 --- !u!64 &5392776750858390174
 MeshCollider:
   m_ObjectHideFlags: 0

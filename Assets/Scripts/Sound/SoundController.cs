@@ -24,6 +24,10 @@ public class SoundController : MonoBehaviour
 
     private void Start()
     {
+        if (soundController != null)
+        {
+            return;
+        }
         fixedPitchSource = gameObject.AddComponent<AudioSource>();
         soundController = this;
         Volume = volume;
@@ -35,7 +39,11 @@ public class SoundController : MonoBehaviour
         {
             return;
         }
-        if (stop && soundController.fixedPitchSource.isPlaying)
+        if (stop)
+        {
+            soundController.fixedPitchSource.Stop();
+        }
+        else if (soundController.fixedPitchSource.isPlaying)
         {
             return;
         }
