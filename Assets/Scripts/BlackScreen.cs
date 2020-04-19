@@ -25,7 +25,7 @@ public class BlackScreen : MonoBehaviour
             if (color.a < 1)
             {
                 Finished = false;
-                color.a += Time.deltaTime * Speed;
+                color.a += Time.unscaledDeltaTime * Speed;
                 if (color.a >= 1)
                 {
                     color.a = 1;
@@ -39,7 +39,7 @@ public class BlackScreen : MonoBehaviour
             if (color.a > 0)
             {
                 Finished = false;
-                color.a -= Time.deltaTime * Speed;
+                color.a -= Time.unscaledDeltaTime * Speed;
                 if (color.a <= 0)
                 {
                     color.a = 0;

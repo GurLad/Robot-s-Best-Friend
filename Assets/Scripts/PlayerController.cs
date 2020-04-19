@@ -6,7 +6,7 @@ using static SavedData;
 
 public class PlayerController : MonoBehaviour
 {
-    public static Vector3 StartPos = new Vector3(44, 0, 11);//new Vector3(-42.6f, 0, -45);
+    public static Vector3 StartPos = new Vector3(-42.6f, 0, -45);
     public static PlayerController Instance;
     [Header("Stats")]
     public float Speed;
