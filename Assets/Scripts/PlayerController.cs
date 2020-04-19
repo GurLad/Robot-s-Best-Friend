@@ -38,10 +38,17 @@ public class PlayerController : MonoBehaviour
         if (Load<int>("Difficulty") == 0)
         {
             DashEnergyRate /= 2;
+            EnergyRecoverRate *= 1.5f;
         }
     }
     private void Update()
     {
+        if (Input.GetButton("Cancel"))
+        {
+            CrossfadeMusicPlayer.Instance.Play("Before the Storm");
+            SceneManager.LoadScene("Menu");
+            return;
+        }
         Vector3 targetVelocity = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         if (targetVelocity.magnitude >= 1 / Sensitivity)
         {

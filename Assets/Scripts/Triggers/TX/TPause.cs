@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class TPause : Trigger
 {
+    public bool Pause = true;
     public override void Activate()
     {
-        Time.timeScale = 0;
+        Time.timeScale = Pause ? 0 : 1;
     }
 }

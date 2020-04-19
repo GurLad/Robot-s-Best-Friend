@@ -35,6 +35,10 @@ public class RatAI : MonoBehaviour
         Backpack.enabled = false;
         BackpackAlt.enabled = true;
         audioSource = GetComponent<AudioSource>();
+        if (SavedData.Load<int>("Difficulty") == 0)
+        {
+            OxygenReplenishRate *= 1.5f;
+        }
     }
     private void Update()
     {
