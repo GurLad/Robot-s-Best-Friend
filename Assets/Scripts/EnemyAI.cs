@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static SavedData;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -27,6 +28,10 @@ public class EnemyAI : MonoBehaviour
         player = PlayerController.Instance;
         rigidbody = GetComponent<Rigidbody>();
         activeAnimation = IdleAnimation;
+        if (Load<int>("Difficulty") == 0)
+        {
+            Range /= 2;
+        }
     }
     private void Update()
     {

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static SavedData;
 
 public class PlayerController : MonoBehaviour
 {
@@ -32,6 +33,10 @@ public class PlayerController : MonoBehaviour
         activeAnimation = IdleAnimation;
         Energy.Max = 100;
         Energy.Value = 100;
+        if (Load<int>("Difficulty") == 0)
+        {
+            DashEnergyRate /= 2;
+        }
     }
     private void Update()
     {
