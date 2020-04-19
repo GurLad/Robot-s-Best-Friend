@@ -396,15 +396,13 @@ MonoBehaviour:
     Press E to open or close
     the rat''s container.
 
-    When closed, it slowly loses oxygen.
+    When open, the rat is vulnerable and may run away.
 
-    When open,
-    the rat is vulnerable and may run away.
+    You
+    lose if the rat is killed (whether inside the container or outside).
 
-    You lose if the rat is killed (whether
-    inside the container or outside).
-
-    Reach HAL-9 to win.'
+    Reach
+    HAL-9 to win.'
 --- !u!222 &100128396
 CanvasRenderer:
   m_ObjectHideFlags: 0
