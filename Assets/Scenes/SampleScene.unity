@@ -2632,7 +2632,7 @@ MonoBehaviour:
   Healthbar: {fileID: 1811166610}
   IsEnemy: 0
   HP: 15
-  InvincibilityTime: 0.3
+  InvincibilityTime: 0
 --- !u!4 &1247831715 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5392776749017617305, guid: 426dccb2bc166724782082e3cee03c3d,

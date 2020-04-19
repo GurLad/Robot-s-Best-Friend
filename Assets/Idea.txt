@@ -5,4 +5,4 @@ V Add dash
 V Enemies attack rat
 V Back is no longer vulnerable when you have no rat
 - Fix pushing enemies
-- Sometimes shot passes through player
+V Sometimes shot passes through player

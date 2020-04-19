@@ -38,6 +38,7 @@ public class Health : MonoBehaviour
             if (IsEnemy != damage.IsEnemy)
             {
                 HP -= damage.Amount;
+                damage.Amount = 0;
                 if (HP <= 0)
                 {
                     if (IsEnemy)
@@ -50,7 +51,7 @@ public class Health : MonoBehaviour
                     }
                 }
                 count = InvincibilityTime;
-                Destroy(other.gameObject);
+                Destroy(other.transform.parent.gameObject);
                 if (Healthbar != null)
                 {
                     Healthbar.Value = HP;
