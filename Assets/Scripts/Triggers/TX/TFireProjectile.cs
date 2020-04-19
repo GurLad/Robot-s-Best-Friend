@@ -7,6 +7,7 @@ public class TFireProjectile : Trigger
     public Rigidbody Projectile;
     public float Speed;
     public Transform Spawner;
+    public GameObject ToFollow;
     private void Reset()
     {
         Spawner = transform;
@@ -15,7 +16,14 @@ public class TFireProjectile : Trigger
     {
         GameObject projectile = Instantiate(Projectile.gameObject);
         projectile.transform.position = Spawner.position;
-        projectile.transform.forward = Spawner.forward;
+        if (ToFollow == null)
+        {
+            projectile.transform.forward = Spawner.forward;
+        }
+        else
+        {
+            projectile.transform.LookAt(ToFollow.transform);
+        }
         projectile.GetComponent<Rigidbody>().velocity = Speed * projectile.transform.forward;
         projectile.SetActive(true);
     }

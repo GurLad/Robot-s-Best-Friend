@@ -81,6 +81,7 @@ MonoBehaviour:
   IdleAnimation: {fileID: 6325466477145255881}
   LookAnimation: {fileID: 5392776749772325949}
   FireAnimation: {fileID: 5392776749638132206}
+  ProjectileSpawner: {fileID: 5392776750224420655}
 --- !u!54 &5392776749017617307
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -303,6 +304,7 @@ MonoBehaviour:
   Projectile: {fileID: 5392776749054897487}
   Speed: 30
   Spawner: {fileID: 5392776750224420654}
+  ToFollow: {fileID: 0}
 --- !u!1 &5392776750239167838
 GameObject:
   m_ObjectHideFlags: 0
