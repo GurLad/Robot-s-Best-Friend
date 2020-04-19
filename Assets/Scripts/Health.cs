@@ -7,8 +7,6 @@ public class Health : MonoBehaviour
     public Healthbar Healthbar;
     public bool IsEnemy;
     public float HP;
-    public float InvincibilityTime;
-    private float count = 0;
     private float fullSize;
 
     // Start is called before the first frame update
@@ -21,24 +19,16 @@ public class Health : MonoBehaviour
             Healthbar.ValueImage.color = Color.red;
         }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (count >= 0)
-        {
-            count -= Time.deltaTime;
-        }
-    }
     private void OnTriggerEnter(Collider other)
     {
         Damage damage = other.gameObject.GetComponentInParent<Damage>();
-        if (damage != null && count <= 0)
+        if (damage != null)
         {
+            Debug.Log(gameObject.name + " was hit");
             if (IsEnemy != damage.IsEnemy)
             {
                 HP -= damage.Amount;
-                damage.Amount = 0;
+                //damage.Amount = 0;
                 if (HP <= 0)
                 {
                     if (IsEnemy)
@@ -50,7 +40,6 @@ public class Health : MonoBehaviour
                         PlayerController.Instance.Lose();
                     }
                 }
-                count = InvincibilityTime;
                 Destroy(other.transform.parent.gameObject);
                 if (Healthbar != null)
                 {

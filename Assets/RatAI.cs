@@ -13,13 +13,15 @@ public class RatAI : MonoBehaviour
     public Healthbar OxygenDisplay;
     public AdvancedAnimation OpenLidAnimation;
     public AdvancedAnimation CloseLidAnimation;
-    public Collider Backpack; 
+    public Collider Backpack;
+    public Collider BackpackAlt;
     public GameObject Body;
     public RatRunAI Rat;
     [HideInInspector]
     public RatMode Mode;
     private float oxygen;
     private float timeToFlee;
+    private AudioSource audioSource;
     private void Awake()
     {
         Instance = this;
@@ -30,12 +32,18 @@ public class RatAI : MonoBehaviour
         OxygenDisplay.Value = 100;
         oxygen = 100;
         timeToFlee = Random.Range(TimeToFlee.x, TimeToFlee.y);
+        Backpack.enabled = false;
+        BackpackAlt.enabled = true;
+        audioSource = GetComponent<AudioSource>();
     }
     private void Update()
     {
+        audioSource.volume = 2 * (0.5f - oxygen / 100);
         switch (Mode)
         {
             case RatMode.Inside:
+                Backpack.enabled = false;
+                BackpackAlt.enabled = true;
                 oxygen -= Time.deltaTime * OxygenDecayRate;
                 if (oxygen <= 0)
                 {
@@ -48,24 +56,28 @@ public class RatAI : MonoBehaviour
                 }
                 break;
             case RatMode.Outside:
+                Backpack.enabled = true;
+                BackpackAlt.enabled = false;
                 timeToFlee -= Time.deltaTime;
-                if (timeToFlee <= 0)
-                {
-                    timeToFlee = Random.Range(TimeToFlee.x, TimeToFlee.y);
-                    Mode = RatMode.Running;
-                    Body.SetActive(false);
-                    Backpack.enabled = false;
-                    RatRunAI newRat = Instantiate(Rat.gameObject).GetComponent<RatRunAI>();
-                    newRat.transform.position = PlayerController.Instance.transform.position - PlayerController.Instance.Model.transform.forward * 1.5f;
-                    newRat.Velocity = -PlayerController.Instance.Model.transform.forward * newRat.Speed;
-                    newRat.Start();
-                }
                 oxygen += Time.deltaTime * OxygenReplenishRate;
                 if (oxygen >= 100)
                 {
                     oxygen = 100;
                 }
                 OxygenDisplay.Value = oxygen;
+                if (timeToFlee <= 0)
+                {
+                    timeToFlee = Random.Range(TimeToFlee.x, TimeToFlee.y);
+                    Mode = RatMode.Running;
+                    Body.SetActive(false);
+                    Backpack.enabled = false;
+                    BackpackAlt.enabled = true;
+                    RatRunAI newRat = Instantiate(Rat.gameObject).GetComponent<RatRunAI>();
+                    newRat.transform.position = PlayerController.Instance.transform.position - PlayerController.Instance.Model.transform.forward * 1.5f;
+                    newRat.Velocity = -PlayerController.Instance.Model.transform.forward * newRat.Speed;
+                    newRat.Start();
+                    break;
+                }
                 if (Input.GetButtonDown("OpenCloseLid"))
                 {
                     CloseLid();

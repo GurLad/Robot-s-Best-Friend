@@ -20,14 +20,12 @@ public class EnemyAI : MonoBehaviour
     private PlayerController player;
     private Rigidbody rigidbody;
     private AdvancedAnimation activeAnimation;
-    private AudioSource audioSource;
     private bool justFound;
     private void Start()
     {
         player = PlayerController.Instance;
         rigidbody = GetComponent<Rigidbody>();
         activeAnimation = IdleAnimation;
-        audioSource = GetComponent<AudioSource>();
     }
     private void Update()
     {
@@ -42,7 +40,7 @@ public class EnemyAI : MonoBehaviour
                 if (justFound)
                 {
                     justFound = false;
-                    audioSource.PlayOneShot(Clips[Random.Range(0, Clips.Length)]);
+                    SoundController.PlaySound(Clips[Random.Range(0, Clips.Length)], true);
                 }
                 transform.LookAt(RatRunAI.Instance.transform);
                 if ((activeAnimation != FireAnimation && activeAnimation != LookAnimation && Vector3.Distance(RatRunAI.Instance.transform.position, transform.position) > StartAttackRange) ||
@@ -73,10 +71,6 @@ public class EnemyAI : MonoBehaviour
                 }
                 return;
             }
-            else if (hit.transform != null)
-            {
-                Debug.Log(hit.transform);
-            }
         }
         Physics.Raycast(transform.position, player.transform.position - transform.position, out hit, float.MaxValue, ~(1 << 8));
         Debug.DrawRay(transform.position, player.transform.position - transform.position);
@@ -86,7 +80,7 @@ public class EnemyAI : MonoBehaviour
             if (justFound)
             {
                 justFound = false;
-                audioSource.PlayOneShot(Clips[Random.Range(0, Clips.Length)]);
+                SoundController.PlaySound(Clips[Random.Range(0, Clips.Length)], true);
             }
             transform.LookAt(player.transform);
             if ((activeAnimation != FireAnimation && activeAnimation != LookAnimation && Vector3.Distance(player.transform.position,transform.position) > StartAttackRange) ||

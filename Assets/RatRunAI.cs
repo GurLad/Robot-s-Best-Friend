@@ -38,6 +38,7 @@ public class RatRunAI : MonoBehaviour
         {
             RatAI.Instance.Body.SetActive(true);
             RatAI.Instance.Backpack.enabled = true;
+            RatAI.Instance.BackpackAlt.enabled = false;
             RatAI.Instance.CloseLid();
             Destroy(gameObject);
         }

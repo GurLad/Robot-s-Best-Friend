@@ -35,9 +35,9 @@ public class SoundController : MonoBehaviour
         {
             return;
         }
-        if (stop)
+        if (stop && soundController.fixedPitchSource.isPlaying)
         {
-            soundController.fixedPitchSource.Stop();
+            return;
         }
         soundController.fixedPitchSource.PlayOneShot(audioClip);
     }
