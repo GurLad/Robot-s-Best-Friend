@@ -28,7 +28,10 @@ public class Health : MonoBehaviour
             if (IsEnemy != damage.IsEnemy)
             {
                 HP -= damage.Amount;
-                //damage.Amount = 0;
+                if (SavedData.Load<int>("Difficulty") == 0)
+                {
+                    damage.Amount = 0;
+                }
                 if (HP <= 0)
                 {
                     if (IsEnemy)

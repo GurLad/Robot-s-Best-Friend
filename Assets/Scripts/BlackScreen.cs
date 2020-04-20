@@ -11,6 +11,7 @@ public class BlackScreen : MonoBehaviour
     private Image image;
     private bool shouldBeOn;
     private Color color;
+    private bool firstFrame = true;
     private void Awake()
     {
         instance = this;
@@ -20,6 +21,11 @@ public class BlackScreen : MonoBehaviour
     }
     private void Update()
     {
+        if (firstFrame)
+        {
+            firstFrame = false;
+            return;
+        }
         if (shouldBeOn)
         {
             if (color.a < 1)
